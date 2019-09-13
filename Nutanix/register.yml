@@ -1,0 +1,14 @@
+- hosts: all
+  become: true
+  tasks: 
+    - name: register to RHN
+      redhat_subscription:
+        state: present
+        username: "wendy.yeo@ctc-g.com.sg"
+        password: "redhat123"
+        auto_attach: true
+
+    - name: update all packages
+      yum:
+        name: "*"
+        state: latest
